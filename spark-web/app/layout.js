@@ -1,5 +1,6 @@
 import './globals.css'
 import Head from 'next/head'
+import { AuthContextProvider } from "../util/context/AuthContext";
 
 export const metadata = {
   title: 'Spark',
@@ -9,10 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <link rel = "icon" href = "/spark-icon.png"/>
-      </Head>
-      <body>{children}</body>
+      <body>
+        <AuthContextProvider>
+          {children}
+        </AuthContextProvider>
+      </body>
     </html>
   )
 }

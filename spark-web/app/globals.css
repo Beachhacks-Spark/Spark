@@ -3,7 +3,10 @@
 @tailwind components;
 @tailwind utilities;  
 
-
+@font-face {
+  font-family: SomicBold;
+  src: url("../public/fonts/NTSomic-Bold.ttf");
+}
 
 @font-face {
   font-family: WixExtra;
@@ -11,13 +14,13 @@
 }
 
 * {
-  font-family:'Courier New', Courier, monospace;
-  background-color: #18181c;
-  color: #fff;
+  font-family: SomicBold;
+  background-color: #fff;
+  color: #18181c;
 }
 
 h1 {
-  font-family: WixExtra;
+  font-family: SomicBold;
 }
 
 

@@ -28,7 +28,7 @@ function Page() {
             <form onSubmit={handleForm} className="form">
                 <label htmlFor="email">
                     <p>Email</p>
-                    <input onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@mail.com" />
+                    <input onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@email.com" />
                 </label>
                 <label htmlFor="password">
                     <p>Password</p>
