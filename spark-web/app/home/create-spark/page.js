@@ -1,27 +1,81 @@
 'use client'
-import React from 'react'
+import React, {useState}from 'react'
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "@/util/firebase/config";
+import DatePicker from "react-datepicker";
+import { useAuthContext } from "../../../util/context/AuthContext"
+import Image from 'next/image';
 
 export default function SparkForm() {
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
-  const [title, setTitle] = React.useState('');
-  const [maxStudents, setMaxStudents] = React.useState(0);
-  const [description, setDescription] = React.useState('');
-  const [interests, setInterests] = React.useState(0);
+    const [datePosted, setDatePosted] = useState(null);
+    const [author, setAuthor] = useState('')
+  const [value, setValue] = useState(dayjs('2022-04-07'));
+  const [title, setTitle] = useState('');
+  const [maxStudents, setMaxStudents] = useState(0);
+  const [description, setDescription] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
+//   const [interests, setInterests] = React.useState(0);
+    const { user } = useAuthContext()
+
+  const sparksCollectionRef = collection(db, "sparks")
+    
+  const createNewSpark = async() => {
+      await addDoc(sparksCollectionRef, {title: title, description: description, students: maxStudents, date: startDate});
+  }
+
+  const handleForm = async (event) => {
+    event.preventDefault()
+    
+    try {
+        createNewSpark();
+    } catch (error) {
+        console.log(error);
+    }
+    
+    // else successful
+
+}
 
   return (
     
-    <div className = "flex h-[90VH] justify-center items-center align-middle gap-8">
-        <div className = "flex">
-            <h1 className = "text-6xl">EVENT FORM</h1>
+    <div className = "flex h-[90VH] justify-center items-center align-middle gap-8 relative">
+        <div className = "flex-col gap-8 relative -mt-16">
+            <h1 className = "text-6xl text-center mb-8" ></h1>
+            <Image src = {"/community-hero.jpg"} alt = {"community-hero"} height = {500} width = {800}/>
         </div>
-        <div className = "grid place-items-center gap-6 w-[50rem]">
-            <input onChange= {(e) => setTitle(e.target.value)} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md" />
-            <textarea onChange = {(e) => setDescription(e.target.value)} required className="textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
+        <div className = "grid place-items-center gap-8 w-[50rem] z-10">
+            <form onSubmit = {handleForm} className = "flex-col gap-6 w-[30em]">
+                <label className="label mb-2">
+                    <span className="label-text">Event Title</span>
+                </label>
+                <input onChange= {(e) => setTitle(e.target.value)} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md mb-4" />
+                <div className="form-control w-max">
+                    <label className="label">
+                        <span className="label-text">Max People</span>
+                    </label>
+                    <label className="input-group w-max">
+                        <span>#</span>
+                        <input onChange = {(e) => {setMaxStudents(e.target.value)}} type="text" placeholder="of people" className="input input-bordered w-max" />
+                    </label>
+                </div>
+                <label className="label mb-1">
+                    <span className="label-text">Date</span>
+                </label>
+                <div className = "w-[28em] border-black mb-4">
+                    <DatePicker
+                        className = "h-12 text-center w-full bg-orange-200 rounded-lg"
+                        showIcon
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}/>
+                </div>
+                <textarea onChange = {(e) => setDescription(e.target.value)} required className="textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
+                <button className = "btn btn-warning w-[33em] mt-4" type = "submit">CREATE SPARK!</button>
+            </form>
         </div>
         
         {/* <LocalizationProvider dateAdapter={AdapterDayjs}>

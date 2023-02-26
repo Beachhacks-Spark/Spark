@@ -50,8 +50,8 @@ function NavBar() {
                 </div>
             </div>
             <Link href = "/home">
-                <div className="navbar-center">
-                    <a className="btn btn-ghost btn-lg text-[50px]">SPARK</a>
+                <div className="navbar-center mr-12">
+                    <a className="btn btn-ghost btn-lg text-[50px]">SPARK <Image className = "bg-transparent" src = {"/sparklogo.svg"} alt = {"sparklogo"} height = {50} width = {50}></Image></a>
                 </div>
             </Link>
 

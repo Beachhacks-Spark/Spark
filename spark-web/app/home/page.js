@@ -3,6 +3,7 @@ import useFetchSparks from '@/hooks/fetchSparks'
 import React, { useState, useEffect } from 'react'
 import { firebase_app, db } from "../../util/firebase/config"
 import { collection, addDoc, getDocs, doc } from "firebase/firestore"
+import EventCard from '@/components/EventCard'
 
 function Home() {
   const [sparks, setSparks] = useState([])
@@ -17,10 +18,13 @@ function Home() {
     getSparks();
   }, [])
   return (
-    <div className = "w-screen flex-col items-center justify-center">
+    <div className = "w-screen flex items-center justify-center align-middle p-12">
         {sparks.map((spark) => {
-          return <div>{spark.id}</div>
-          })}
+          return  (
+          <div className = "">
+            <EventCard/>
+          </div>
+          )})}
     </div>
   )
 }
