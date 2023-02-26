@@ -27,9 +27,9 @@ function Page() {
 
     return (
         <Suspense fallback = {<Loading/>}>
-            <div className="hero min-h-screen bg-base-100">
+            <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:w-[50vw]">
-                        <div className="card flex-shrink-0 w-full max-w-lg shadow-md bg-base-100 h-[33em] flex-col justify-center">
+                        <div className="card flex-shrink-0 w-full max-w-lg shadow-md h-[33em] flex-col justify-center">
                             <div className="text-left ml-8">
                                 <h1 className="text-4xl font-bold">Create Account</h1>  
                             </div>
@@ -41,13 +41,13 @@ function Page() {
                                         <label className="label">
                                             <span className="label-text text-xl">Email</span>
                                         </label>
-                                        <input onChange={(e) => setEmail(e.target.value)}  type="email" placeholder="email" className="input input-bordered" />
+                                        <input onChange={(e) => setEmail(e.target.value)}  type="email" placeholder="email" className="input input-bordered bg-[#fff]" />
                                     </div>
                                     <div className="form-control mt-3">
                                         <label className="label">
                                             <span className="label-text text-xl">Password</span>
                                         </label>
-                                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" />
+                                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered bg-[#fff]" />
                                     </div>
                                 </div>
                                 <div className="form-control mt-4">
@@ -62,7 +62,7 @@ function Page() {
     );
 }
 
-export default Page;
+export default Page;    
 
 
 
