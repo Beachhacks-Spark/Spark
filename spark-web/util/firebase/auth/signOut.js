@@ -3,7 +3,7 @@ import { signOut, getAuth } from "firebase/auth";
 
 const auth = getAuth(firebase_app);
 
-export default async function signOut() {
+export default async function signUserOut() {
     try {
         await signOut(auth);
         console.log("User signed out successfully");

@@ -7,8 +7,6 @@ import './signIn.css'
 function Page() {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
-    const [isEmail, setIsEmail] = React.useState(false)
-    const [isPassword, setIsPassword] = React.useState(true)
 
     const router = useRouter()
 
@@ -18,7 +16,6 @@ function Page() {
         const { result, error } = await signIn(email, password);
 
         if (error) {
-            setIsPassword(false);
             return console.log(error)
         }
         
@@ -49,13 +46,10 @@ function Page() {
                                             <span className="label-text text-xl">Password</span>
                                         </label>
                                         <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" />
-                                        {/* <label className="label">
-                                            {isPassword ? <></> : <span className="label-text text-red-700">Email and/or Password is Invalids</span>}
-                                        </label> */}
                                     </div>
                                 </div>
                                 <div className="form-control mt-4">
-                                    <button type = "submit"className="btn btn-warning">Login</button>
+                                    <button type = "submit" className="btn btn-warning">Login</button>
                                 </div>
                             </div>
                             </form>

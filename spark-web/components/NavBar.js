@@ -1,10 +1,28 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
-
+import Image from 'next/image'
+import { getAuth } from "firebase/auth"
+import firebase_app from '@/util/firebase/config'
+import { useRouter } from 'next/navigation'
+import signUserOut from '@/util/firebase/auth/signOut'
+import { useAuthContext } from "../util/context/AuthContext";
 function NavBar() {
     // const [user, setUser] = useState('');
-
-
+    const { user } = useAuthContext();
+    const auth = getAuth(firebase_app)
+    const router = useRouter();
+    async function handleSignOut() {
+        try {
+            router.push("/")
+            await signUserOut(auth);
+            console.log("User signed out successfully");
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    console.log(user);
     return (
         <div className="navbar bg-base-100 h-24 px-8">
             <div className="navbar-start">
@@ -51,12 +69,12 @@ function NavBar() {
                 <div className="dropdown dropdown-end">
                     <div tabIndex = {0} className="avatar online placeholder">
                         <div className="bg-yellow-500 rounded-full w-16 cursor-pointer">
-                            <span className="text-xl bg-yellow-500 text-[#18181c]">JO</span>
+                            <span className="text-xl bg-yellow-500 text-[#18181c]">{user.email.slice(0,2)}</span>
                         </div>
                     </div> 
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                        <li><a>Profile</a></li>
+                        <li onClick = {handleSignOut}><a>Sign Out</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,21 +1,22 @@
+'use client'
+
 import React from 'react'
 import NavBar from '@/components/NavBar'
 import { useAuthContext } from "../../util/context/AuthContext";
 import { useRouter } from "next/navigation";
-
+import AccessDenied from '@/components/AccessDenied';
 function HomeLayout({children}) {
-    // const { user } = useAuthContext()
-    // const router = useRouter()
-
-    // React.useEffect(() => {
-    //     if (user == null) router.push("/signup")
-    // }, [user])
-
+    const { user } = useAuthContext()
+    const router = useRouter()
 
   return (
+    
     <section>
-        <NavBar/>
-        {children}
+        {user !== null ? 
+        <div>
+            <NavBar/>
+            {children}
+        </div> : <AccessDenied/>}
     </section>
   )
 }
