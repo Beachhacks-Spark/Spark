@@ -7,6 +7,7 @@ import './signIn.css'
 function Page() {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
+    const [isInvalid, setIsInvalid] = React.useState(false)
 
     const router = useRouter()
 
@@ -14,8 +15,9 @@ function Page() {
         event.preventDefault()
         
         const { result, error } = await signIn(email, password);
-
+        
         if (error) {
+            setIsInvalid(true);
             return console.log(error)
         }
         
@@ -46,6 +48,9 @@ function Page() {
                                             <span className="label-text text-xl">Password</span>
                                         </label>
                                         <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered bg-[#fff]" />
+                                        <label className = "label mt-2">
+                                            <span className = "label-text text-md">{isInvalid ? <p className = "text-red-700">Email and/or Password Invalid</p> : <p></p>}</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div className="form-control mt-4">

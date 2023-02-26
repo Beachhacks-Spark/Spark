@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { AuthContextProvider } from "../util/context/AuthContext";
 
 export const metadata = {
-  title: 'Spark',
+  title: 'SPARK',
   description: 'SocialApp for Students to host and attend events',
 }
 
