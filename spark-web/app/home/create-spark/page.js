@@ -1,11 +1,11 @@
 'use client'
-import React, {useState}from 'react'
+import React, {useEffect, useState}from 'react'
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDoc, doc } from "firebase/firestore";
 import { db } from "@/util/firebase/config";
 import DatePicker from "react-datepicker";
 import { useAuthContext } from "../../../util/context/AuthContext"
@@ -22,11 +22,26 @@ export default function SparkForm() {
 //   const [interests, setInterests] = React.useState(0);
     const { user } = useAuthContext()
 
+    const userCollectionRef = collection(db, "users")
+
   const sparksCollectionRef = collection(db, "sparks")
     
   const createNewSpark = async() => {
-      await addDoc(sparksCollectionRef, {title: title, description: description, students: maxStudents, date: startDate});
+      await addDoc(sparksCollectionRef, {title: title, description: description, students: maxStudents, date: startDate, author: user.email});
   }
+
+//   const getUserSnap = async() => {
+//     const docRef = doc(db, "users", user.email);
+//     const docSnapshot = await getDoc(docRef);
+//     console.log(docSnapshot.data());
+//     }
+//   }
+  // Retrieving the document snapshot
+
+//   console.log(user.email);
+//   useEffect(() => {
+//     getUserSnap();
+//   })
 
   const handleForm = async (event) => {
     event.preventDefault()
@@ -36,6 +51,11 @@ export default function SparkForm() {
     } catch (error) {
         console.log(error);
     }
+    
+    setTitle("")
+    setMaxStudents("");
+    setDescription("");
+    setStartDate(new Date());
     
     // else successful
 
@@ -53,14 +73,14 @@ export default function SparkForm() {
                 <label className="label mb-2">
                     <span className="label-text">Event Title</span>
                 </label>
-                <input onChange= {(e) => setTitle(e.target.value)} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md mb-4" />
+                <input onChange= {(e) => setTitle(e.target.value)}value = {title} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md mb-4" />
                 <div className="form-control w-max">
                     <label className="label">
                         <span className="label-text">Max People</span>
                     </label>
                     <label className="input-group w-max">
                         <span>#</span>
-                        <input onChange = {(e) => {setMaxStudents(e.target.value)}} type="text" placeholder="of people" className="input input-bordered w-max" />
+                        <input onChange = {(e) => {setMaxStudents(e.target.value)}}value = {maxStudents} type="text" placeholder="of people" className="input input-bordered w-max" />
                     </label>
                 </div>
                 <label className="label mb-1">
@@ -70,10 +90,12 @@ export default function SparkForm() {
                     <DatePicker
                         className = "h-12 text-center w-full bg-orange-200 rounded-lg"
                         showIcon
+                        value = {startDate}
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}/>
+                        
                 </div>
-                <textarea onChange = {(e) => setDescription(e.target.value)} required className="textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
+                <textarea onChange = {(e) => setDescription(e.target.value)}value = {description} required className="textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
                 <button className = "btn btn-warning w-[33em] mt-4" type = "submit">CREATE SPARK!</button>
             </form>
         </div>

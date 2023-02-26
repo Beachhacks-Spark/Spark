@@ -19,12 +19,20 @@ function Home() {
   }, [])
   return (
     <div className = "w-screen flex items-center justify-center align-middle p-12">
+      <div className = "flex-col justify-center align-middle text-center gap-4">
         {sparks.map((spark) => {
           return  (
-          <div className = "">
-            <EventCard/>
+          <div>
+            <EventCard 
+              title = {spark.title}
+              description = {spark.description}
+              date = {spark.date}
+              author = {spark.author}
+              
+            />
           </div>
           )})}
+          </div>
     </div>
   )
 }

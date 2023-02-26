@@ -4,23 +4,21 @@ function EventCard({title, description, date, author, avatar}) {
   return (
     <article className="rounded-xl border-2 border-gray-100 bg-[#fff] w-[40vw]">
         <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8 ">
-            <a href="#" className="block shrink-0">
-            <img
-                alt="Speaker"
-                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                className="h-14 w-14 rounded-lg object-cover"
-            />
-            </a>
+            <div tabIndex = {0} className="avatar online placeholder">
+                <div className="bg-yellow-500 rounded-full w-16 cursor-pointer">
+                    <span className="text-xl bg-yellow-500 text-[#18181c]">{author.slice(0,2)}</span>
+                </div>
+            </div> 
 
             <div>
-            <h3 className="text-5xl">
+            <h3 className="text-4xl text-left">
                 <a href="#" className="hover:underline text-4xl">
-                    Studying for Midterm!!!{title}
+                    {title}
                 </a>
             </h3>
 
             <p className="line-clamp-2 text-lg text-gray-700">
-                Event Description{description}
+                {description}
             </p>
 
             <div className="mt-2 sm:flex sm:items-center sm:gap-2">

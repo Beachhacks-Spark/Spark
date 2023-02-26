@@ -20,7 +20,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className = "flex justify-center h-[70vh] mx-[50] items-center gap-8">
+      <div className = "flex justify-center h-[70vh] mx-[50]   items-center gap-8">
         <Image className = "z-1 relative" src={"/homepage1.svg"} alt={"homepage1"} height = {700} width = {700}/>
 
         <div>
@@ -49,15 +49,18 @@ export default function Home() {
 
       <div className = "flex-col h-[80vh] p-12 bg-[#a2d9ff] justify-center items-center align-middle text-center">
         <h1 className = "bg-[#a2d9ff] text-6xl">How Does Spark Work?</h1>
-        <div className = "flex justify-evenly align-middle bg-[#a2d9ff]" >
-          <div classname = "bg-[#a2d9ff]">
-            <Image className = "bg-[#a2d9ff]" src = "/baghappy.svg" alt = "baghappy" height = {400} width = {400}></Image>
+        <div className = "flex justify-center align-middle bg-[#a2d9ff]" >
+          <div classname = "bg-[#a2d9ff] flex-col">
+            <Image className = "bg-[#a2d9ff]" src = "/baghappy.svg" alt = "baghappy" height = {400} width = {400}/>
+            <h1 className = "text-4xl bg-[#a2d9ff] ">Search for Sparks</h1>
           </div>
-          <div>
-            <Image></Image>
+          <div className = "bg-[#a2d9ff] flex-col">
+            <Image className = "bg-[#a2d9ff]" src = "/backwarditem.svg" alt = "backwarditem" height = {400} width = {400}/>
+            <h1 className = "text-4xl bg-[#a2d9ff] ">Ignite a Spark</h1>
           </div>
-          <div>
-
+          <div className = "bg-[#a2d9ff] flex-col">
+            <Image className = "bg-[#a2d9ff]" src = "/ticket.svg" altl = "vector.svg" height = {400} width = {400}/>
+            <h1 className = "text-4xl bg-[#a2d9ff]">Fuel a Spark</h1>
           </div>
         </div>
       </div>

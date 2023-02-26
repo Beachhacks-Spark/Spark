@@ -10,7 +10,6 @@ function useFetchSparks() {
     const [sparks, setSparks] = useState(null);
     
     const { user } = useAuthContext();
-    console.log('banana')
     useEffect(() => {
         async function fetchData() {
             try{
