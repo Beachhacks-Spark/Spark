@@ -7,9 +7,9 @@ function Page() {
     const { user } = useAuthContext()
     const router = useRouter()
 
-    // React.useEffect(() => {
-    //     if (user == null) router.push("/signup")
-    // }, [user])
+    React.useEffect(() => {
+        if (user == null) router.push("/signup")
+    }, [user])
 
     return (
         <div className = "flex justify-center items-center h-screen">
