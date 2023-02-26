@@ -30,11 +30,12 @@ function Page() {
     return (
                 <div className="hero min-h-screen bg-base-100">
                     <div className="hero-content flex-col lg:w-[50vw]">
-                        <div className="card flex-shrink-0 w-full max-w-lg shadow-md bg-base-100 h-[33em] flex-col justify-center gap-3">
+                        <div className="card flex-shrink-0 w-full max-w-lg shadow-md bg-base-100 h-[33em] flex-col justify-center">
                             <div className="text-left ml-8">
                                 <h1 className="text-4xl font-bold">Login</h1>  
                             </div>
-                            <form onSubmit={handleForm} className="form">
+                            <div className="divider px-7"></div> 
+                            <form onSubmit={handleForm} className="form -mt-6">
                             <div className="card-body gap-6">
                                 <div>
                                     <div className="form-control">
@@ -42,11 +43,8 @@ function Page() {
                                             <span className="label-text text-xl">Email</span>
                                         </label>
                                         <input onChange={(e) => setEmail(e.target.value)}  type="email" placeholder="email" className="input input-bordered" />
-                                        <label className="label">
-                                            {/* {!isEmail ? <span className="label-text text-red-700">Please Enter a valid Email</span> : <></>} */}
-                                        </label>
                                     </div>
-                                    <div className="form-control">
+                                    <div className="form-control mt-3">
                                         <label className="label">
                                             <span className="label-text text-xl">Password</span>
                                         </label>

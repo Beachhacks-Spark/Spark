@@ -27,28 +27,37 @@ function Page() {
 
     return (
         <Suspense fallback = {<Loading/>}>
-            <div className = "flex items-center justify-center h-screen">
-                <div className="min-w-[30vw] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-10 flex justify-center">
-                    <div className = "flex-col w-[20em] gap-6">
-                        <h1 className="text-3xl text-center mb-4">Sign up</h1>
-                        <form onSubmit={handleForm} className = "flex-col items-center justify-center gap-8">
-                            <div className="form-control w-full max-w-xs">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input onChange={(e) => setEmail(e.target.value)} required type="email" id="email" placeholder="example@email.com" className="input input-bordered w-full max-w-xs" />
+            <div className="hero min-h-screen bg-base-100">
+                    <div className="hero-content flex-col lg:w-[50vw]">
+                        <div className="card flex-shrink-0 w-full max-w-lg shadow-md bg-base-100 h-[33em] flex-col justify-center">
+                            <div className="text-left ml-8">
+                                <h1 className="text-4xl font-bold">Create Account</h1>  
                             </div>
-                            <div className="form-control w-full max-w-xs">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input onChange={(e) => setPassword(e.target.value)} required type="password" id="password" placeholder="password123" className="input input-bordered w-full max-w-xs" />
+                            <div className="divider px-7"></div> 
+                            <form onSubmit={handleForm} className="form -mt-6">
+                            <div className="card-body gap-6">
+                                <div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-xl">Email</span>
+                                        </label>
+                                        <input onChange={(e) => setEmail(e.target.value)}  type="email" placeholder="email" className="input input-bordered" />
+                                    </div>
+                                    <div className="form-control mt-3">
+                                        <label className="label">
+                                            <span className="label-text text-xl">Password</span>
+                                        </label>
+                                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" />
+                                    </div>
+                                </div>
+                                <div className="form-control mt-4">
+                                    <button type = "submit"className="btn btn-warning">Sign Up</button>
+                                </div>
                             </div>
-                            <button className ="btn btn-wide" type = "submit">Sign Up</button>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </Suspense>
     );
 }

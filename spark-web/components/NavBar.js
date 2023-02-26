@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 
 function NavBar() {
-    const [user, setUser] = useState('');
+    // const [user, setUser] = useState('');
 
 
     return (
@@ -50,8 +50,8 @@ function NavBar() {
 
                 <div className="dropdown dropdown-end">
                     <div tabIndex = {0} className="avatar online placeholder">
-                        <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
-                            <span className="text-xl">JO</span>
+                        <div className="bg-yellow-500 rounded-full w-16 cursor-pointer">
+                            <span className="text-xl bg-yellow-500 text-[#18181c]">JO</span>
                         </div>
                     </div> 
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
