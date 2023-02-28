@@ -24,13 +24,13 @@ function NavBar() {
     }
     console.log(user.uid);
     return (
-        <div className="navbar bg-base-100 h-24 px-8">
+        <div className="navbar h-24 px-8">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 bg-transparent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-6 shadow bg-base-100 rounded-box w-64">
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-6 shadow rounded-box w-64">
                         <Link href = "/home">
                             <li>
                                 <a className = "text-2xl">Home</a>
@@ -73,7 +73,7 @@ function NavBar() {
                             <span className="text-xl bg-yellow-500 text-[#18181c]">{user.email.slice(0,2)}</span>
                         </div>
                     </div> 
-                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow rounded-box w-52">
                         <li><a>Profile</a></li>
                         <li onClick = {handleSignOut}><a>Sign Out</a></li>
                     </ul>

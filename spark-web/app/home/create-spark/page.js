@@ -73,14 +73,14 @@ export default function SparkForm() {
                 <label className="label mb-2">
                     <span className="label-text">Event Title</span>
                 </label>
-                <input onChange= {(e) => setTitle(e.target.value)}value = {title} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md mb-4" />
+                <input onChange= {(e) => setTitle(e.target.value)}value = {title} required type="text" placeholder="Enter Title" className="input input-bordered w-full max-w-md text-md mb-4 bg-transparent" />
                 <div className="form-control w-max">
                     <label className="label">
                         <span className="label-text">Max People</span>
                     </label>
-                    <label className="input-group w-max">
-                        <span>#</span>
-                        <input onChange = {(e) => {setMaxStudents(e.target.value)}}value = {maxStudents} type="text" placeholder="of people" className="input input-bordered w-max" />
+                    <label className="input-group w-max bg-transparent">
+                        <span className = "bg-gray-200">#</span>
+                        <input onChange = {(e) => {setMaxStudents(e.target.value)}}value = {maxStudents} type="text" placeholder="of people" className="input input-bordered w-max bg-transparent" />
                     </label>
                 </div>
                 <label className="label mb-1">
@@ -95,7 +95,7 @@ export default function SparkForm() {
                         onChange={(date) => setStartDate(date)}/>
                         
                 </div>
-                <textarea onChange = {(e) => setDescription(e.target.value)}value = {description} required className="textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
+                <textarea onChange = {(e) => setDescription(e.target.value)}value = {description} required className="bg-transparent textarea textarea-bordered w-full max-w-md text-md h-[10rem]" placeholder="Enter a Description"></textarea>
                 <button className = "btn btn-warning w-[33em] mt-4" type = "submit">CREATE SPARK!</button>
             </form>
         </div>

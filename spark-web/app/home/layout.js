@@ -13,7 +13,7 @@ function HomeLayout({children}) {
     
     <section>
         {user !== null ? 
-        <div>
+        <div className = "bg-transparent">
             <NavBar/>
             {children}
         </div> : <AccessDenied/>}
